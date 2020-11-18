@@ -2,6 +2,7 @@ const models = require('../models')
 const Project = models.Project
 
 exports.projects_create = async (req, res, next) => {
+  console.log(req.usuario)
   Project.create(req.body).then(o => {
     res.send(o.dataValues)
   })
@@ -18,4 +19,7 @@ exports.projects_get = async (req, res) => {
 exports.projects_delete = async (req, res) => {
   const cidadao = await Project.findByPk(req.params.id)
   await cidadao.destroy()
+  return res.send({
+    mensagem: 'projeto deletado'
+  })
 }
