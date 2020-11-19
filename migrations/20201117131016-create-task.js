@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       memberId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         references: {
           model: 'Members',
           key: 'id'
