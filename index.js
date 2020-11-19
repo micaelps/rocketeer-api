@@ -5,8 +5,8 @@ const userRoute = require('./routes/users')
 const memberRoute = require('./routes/members')
 const taskRoute = require('./routes/tasks')
 app.use(express.json())
-
-app.listen(3000, () => {
+const port = process.env.PORT || 8080
+app.listen(port, () => {
   console.log('ta no ar')
 })
 

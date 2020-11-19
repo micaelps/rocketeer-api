@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "kadywpuvypuebk",
-    "password": "b024fac39781d2f93193bda8d3be3b2a9e38bc16582add5d1a667594ff8de07a",
-    "database": "d6jf00a1m6cbq7",
-    "host": "ec2-54-158-222-248.compute-1.amazonaws.com",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "rocketeer_db",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
@@ -14,10 +14,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "kadywpuvypuebk",
-    "password": "b024fac39781d2f93193bda8d3be3b2a9e38bc16582add5d1a667594ff8de07a",
-    "database": "d6jf00a1m6cbq7",
-    "host": "ec2-54-158-222-248.compute-1.amazonaws.com",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "rocketeer_db",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   }
 }
