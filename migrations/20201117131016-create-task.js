@@ -18,6 +18,13 @@ module.exports = {
           key: 'id'
         }
       },
+      projectId: {
+        type: Sequelize.UUID,
+        references: {
+          model: 'Projects',
+          key: 'id'
+        }
+      },
       estimate: {
         type: Sequelize.INTEGER
       },
