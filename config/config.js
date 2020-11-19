@@ -11,10 +11,7 @@ module.exports = {
     dialect: 'postgres'
   },
   production: {
-    username: 'postgres',
-    password: 'postgres',
-    database: 'rocketeer_db',
-    host: '127.0.0.1',
+    url: process.env.DATABASE_URL,
     dialect: 'postgres'
   }
 }
