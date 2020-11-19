@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   Task.init(
     {
       name: DataTypes.STRING,
-      memberId: DataTypes.INTEGER,
+      memberId: DataTypes.UUID,
+      projectId: DataTypes.UUID,
       estimate: DataTypes.INTEGER,
       description: DataTypes.STRING
     },
