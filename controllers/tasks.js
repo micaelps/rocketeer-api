@@ -11,7 +11,7 @@ exports.tasks_create = async (req, res) => {
 
 exports.tasks_get_all = async (req, res) => {
   try {
-    const lista = await Task.findAll()
+    const lista = await Task.findAll({ include: { association: 'membro' } })
     return res.send(lista)
   } catch (error) {
     return res.status(400).json({ error: error })
@@ -20,7 +20,9 @@ exports.tasks_get_all = async (req, res) => {
 
 exports.tasks_get = async (req, res) => {
   try {
-    const tarefa = await Task.findByPk(req.params.id)
+    const tarefa = await Task.findByPk(req.params.id, {
+      include: { association: 'membro' }
+    })
 
     if (tarefa) {
       return res.send(tarefa)

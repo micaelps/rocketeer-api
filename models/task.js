@@ -1,4 +1,5 @@
 'use strict'
+const project = require('../models/project')
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
@@ -8,13 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate (models) {
-      // define association here
+      this.belongsTo(models.Member,{foreignKey:'memberId', as:'membro'})
     }
   }
   Task.init(
     {
       name: DataTypes.STRING,
-      memberId: DataTypes.INTEGER,
+      memberId: DataTypes.UUID,
+      projectId: DataTypes.UUID,
       estimate: DataTypes.INTEGER,
       description: DataTypes.STRING
     },
