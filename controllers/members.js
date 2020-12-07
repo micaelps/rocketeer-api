@@ -49,11 +49,12 @@ exports.members_delete = async (req, res) => {
 }
 
 exports.members_update = async (req, res) => {
-  let cidadao = await Member.findByPk(req.params.id)
+  const cidadao = await Member.findByPk(req.params.id)
   if (!cidadao) {
     return res.status(400).json({ error: 'membro não existe' })
   }
 
-  cidadao = req.body
-  await cidadao.save()
+  cidadao.name = req.body.name
+  cidadao.email = req.body.email
+  await cidadao.save().then(o => res.send(o.dataValues))
 }

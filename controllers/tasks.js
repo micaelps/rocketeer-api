@@ -49,3 +49,18 @@ exports.tasks_delete = async (req, res) => {
     return res.status(400).json({ error: error })
   }
 }
+
+exports.projects_update = async (req, res) => {
+  const cidadao = await Task.findByPk(req.params.id)
+  if (!cidadao) {
+    return res.status(400).json({ error: 'task não existe' })
+  }
+
+  cidadao.name = req.body.name
+  cidadao.memberId = req.body.memberId
+  cidadao.projectId = req.body.projectId
+  cidadao.estimate = req.body.estimate
+  cidadao.description = req.body.description
+
+  await cidadao.save().then(o => res.send(o.dataValues))
+}

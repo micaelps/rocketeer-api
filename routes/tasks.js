@@ -10,6 +10,8 @@ router.post('/', login, TasksController.tasks_create)
 
 router.get('/:id', login, TasksController.tasks_get)
 
+router.put('/:id', login, TasksController.tasks_update)
+
 router.delete('/:id', login, TasksController.tasks_delete)
 
 module.exports = router

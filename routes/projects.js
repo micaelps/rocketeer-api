@@ -10,6 +10,8 @@ router.post('/', login, ProjectsController.projects_create)
 
 router.get('/:id', login, ProjectsController.projects_get)
 
+router.put('/:id', login, ProjectsController.projects_update)
+
 router.delete('/:id', login, ProjectsController.projects_delete)
 
 module.exports = router

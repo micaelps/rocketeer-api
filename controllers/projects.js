@@ -46,3 +46,18 @@ exports.projects_delete = async (req, res) => {
     return res.status(400).json({ error: error })
   }
 }
+
+exports.projects_update = async (req, res) => {
+  const cidadao = await Project.findByPk(req.params.id)
+  if (!cidadao) {
+    return res.status(400).json({ error: 'projeto não existe' })
+  }
+
+  cidadao.name = req.body.name
+  cidadao.description = req.body.description
+  cidadao.status = req.body.status
+  cidadao.progress = req.body.progress
+  cidadao.tag = req.body.tag
+
+  await cidadao.save().then(o => res.send(o.dataValues))
+}
