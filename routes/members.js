@@ -10,6 +10,8 @@ router.post('/', login, MembersController.members_create)
 
 router.get('/:id', login, MembersController.members_get)
 
+router.put('/:id', login, MembersController.members_update)
+
 router.delete('/:id', login, MembersController.members_delete)
 
 module.exports = router
