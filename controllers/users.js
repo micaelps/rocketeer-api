@@ -90,9 +90,9 @@ exports.users_login = async (req, res) => {
       const token = jwt.sign(
         { id_usuario: user.id, email: user.email },
         'tokensecreto',
-        {
-          expiresIn: '1h'
-        }
+        // {
+        //   expiresIn: '24h'
+        // }
       )
       return res.status(200).send({
         mensagem: 'autenticado com sucesso!',

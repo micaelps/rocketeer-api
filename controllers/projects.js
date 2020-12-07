@@ -21,7 +21,6 @@ exports.projects_get_all = async (req, res) => {
 exports.projects_get = async (req, res) => {
   try {
     const projeto = await Project.findByPk(req.params.id)
-
     if (projeto) {
       return res.send(projeto)
     } else {
