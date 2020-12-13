@@ -2,6 +2,7 @@ const Yup = require('yup')
 const models = require('../models')
 const User = models.User
 const jwt = require('jsonwebtoken')
+const { v4: uuidv4 } = require('uuid')
 
 exports.users_create = async (req, res) => {
   try {
@@ -25,7 +26,7 @@ exports.users_create = async (req, res) => {
     if (userExists) {
       return res.status(400).json({ error: 'Usuario ja existe.' })
     }
-
+    req.body.id = uuidv4()
     User.create(req.body).then(o => res.send(o.dataValues))
   } catch (error) {
     return res.status(400).json({ error: error })
