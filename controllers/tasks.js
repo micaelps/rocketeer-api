@@ -1,8 +1,10 @@
 const models = require('../models')
 const Task = models.NewTask
+const { v4: uuidv4 } = require('uuid')
 
 exports.tasks_create = async (req, res) => {
   try {
+    req.body.id = uuidv4()
     Task.create(req.body).then(o => res.send(o.dataValues))
   } catch (error) {
     return res.status(400).json({ error: error })
