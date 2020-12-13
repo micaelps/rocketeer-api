@@ -10,7 +10,7 @@ dotenv.config()
 app.use(express.json())
 const port = process.env.PORT || 8080
 app.listen(port, () => {
-  console.log('ta no ar')
+  console.log('ta no ar dnv')
 })
 
 app.use('/projects', projectRoute)
