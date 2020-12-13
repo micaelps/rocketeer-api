@@ -1,5 +1,5 @@
 const models = require('../models')
-const Task = models.Task
+const Task = models.NewTask
 
 exports.tasks_create = async (req, res) => {
   try {
@@ -11,7 +11,7 @@ exports.tasks_create = async (req, res) => {
 
 exports.tasks_get_all = async (req, res) => {
   try {
-    const lista = await Task.findAll({ include: { association: 'membro' } })
+    const lista = await Task.findAll()
     return res.send(lista)
   } catch (error) {
     return res.status(400).json({ error: error })
@@ -20,9 +20,7 @@ exports.tasks_get_all = async (req, res) => {
 
 exports.tasks_get = async (req, res) => {
   try {
-    const tarefa = await Task.findByPk(req.params.id, {
-      include: { association: 'membro' }
-    })
+    const tarefa = await Task.findByPk(req.params.id)
 
     if (tarefa) {
       return res.send(tarefa)
@@ -50,16 +48,15 @@ exports.tasks_delete = async (req, res) => {
   }
 }
 
-exports.projects_update = async (req, res) => {
+exports.tasks_update = async (req, res) => {
   const cidadao = await Task.findByPk(req.params.id)
   if (!cidadao) {
     return res.status(400).json({ error: 'task não existe' })
   }
-
   cidadao.name = req.body.name
-  cidadao.memberId = req.body.memberId
-  cidadao.projectId = req.body.projectId
-  cidadao.estimate = req.body.estimate
+  cidadao.owner = req.body.owner
+  cidadao.estimatedTime = req.body.estimatedTime
+  cidadao.status = req.body.status
   cidadao.description = req.body.description
 
   await cidadao.save().then(o => res.send(o.dataValues))
