@@ -4,14 +4,14 @@ const login = require('../middleware/login')
 
 const TasksController = require('../controllers/tasks.js')
 
-router.get('/', login, TasksController.tasks_get_all)
+router.get('/', TasksController.tasks_get_all)
 
-router.post('/', login, TasksController.tasks_create)
+router.post('/', TasksController.tasks_create)
 
-router.get('/:id', login, TasksController.tasks_get)
+router.get('/:id', TasksController.tasks_get)
 
-router.put('/:id', login, TasksController.tasks_update)
+router.put('/:id', TasksController.tasks_update)
 
-router.delete('/:id', login, TasksController.tasks_delete)
+router.delete('/:id', TasksController.tasks_delete)
 
 module.exports = router
