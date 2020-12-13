@@ -90,7 +90,7 @@ exports.users_login = async (req, res) => {
     if (user.password === req.body.password) {
       const token = jwt.sign(
         { id_usuario: user.id, email: user.email },
-        'tokensecreto',
+        'tokensecreto'
         // {
         //   expiresIn: '24h'
         // }
