@@ -5,9 +5,9 @@ const projectRoute = require('./routes/projects')
 const userRoute = require('./routes/users')
 const memberRoute = require('./routes/members')
 const taskRoute = require('./routes/tasks')
-
+const cors = require('cors')
 dotenv.config()
-app.use(express.json())
+app.use(express.json(), cors())
 const port = process.env.PORT || 8080
 app.listen(port, () => {
   console.log('ta no ar dnv')
